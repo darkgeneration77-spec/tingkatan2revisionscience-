@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tingkatan 2 Sejarah Bab 5 | 考前急救包</title>
+<style>
+:root{
+  --bg:#08111f;--panel:#101d31;--panel2:#152640;--text:#f4f7fb;--muted:#b7c4d6;
+  --gold:#f5c451;--red:#ff6b6b;--green:#49d49d;--blue:#66a7ff;--line:#2a3d59;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Noto Sans SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#07101d,#0b1728 50%,#08111f);color:var(--text);line-height:1.65}
+header{padding:48px 20px 30px;text-align:center;background:
+radial-gradient(circle at 50% 0%,rgba(245,196,81,.22),transparent 40%),
+linear-gradient(135deg,#0c1b30,#132a48)}
+header h1{font-size:clamp(30px,6vw,62px);margin:0;color:var(--gold);letter-spacing:1px}
+header h2{margin:8px 0;color:white;font-weight:700}
+header p{max-width:900px;margin:15px auto;color:var(--muted)}
+.badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.badge{border:1px solid rgba(245,196,81,.45);background:rgba(245,196,81,.1);color:#ffe39a;padding:7px 12px;border-radius:999px;font-size:14px}
+nav{position:sticky;top:0;z-index:10;background:rgba(8,17,31,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;gap:8px;padding:10px;overflow:auto}
+nav a{color:var(--text);text-decoration:none;padding:9px 13px;border-radius:9px;white-space:nowrap;font-size:14px}
+nav a:hover{background:var(--panel2);color:var(--gold)}
+main{max-width:1160px;margin:auto;padding:24px 16px 80px}
+section{scroll-margin-top:75px;margin:28px 0}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.num{width:45px;height:45px;display:grid;place-items:center;border-radius:13px;background:var(--gold);color:#17120a;font-weight:900}
+h2{margin:0;font-size:clamp(23px,4vw,34px)}
+h3{color:var(--gold);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.card{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 14px 35px rgba(0,0,0,.18)}
+.card strong{color:var(--gold)}
+.zh{color:#d7e6ff;background:rgba(102,167,255,.08);border-left:4px solid var(--blue);padding:10px 12px;border-radius:8px;margin-top:10px}
+.exam{background:rgba(255,107,107,.08);border-left:4px solid var(--red);padding:12px;border-radius:8px;margin-top:12px}
+.memory{background:rgba(73,212,157,.09);border:1px solid rgba(73,212,157,.3);padding:12px;border-radius:10px}
+.keyword{display:inline-block;margin:4px 4px 0 0;padding:4px 8px;border-radius:7px;background:#213653;color:#f9dc8a;font-weight:700}
+.timeline{display:grid;gap:12px}
+.t-item{display:grid;grid-template-columns:105px 1fr;gap:14px;align-items:start}
+.year{font-size:22px;font-weight:900;color:var(--gold);background:#192a43;border-radius:12px;padding:10px;text-align:center}
+.flow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+.flow .step{background:#172a46;border:1px solid var(--line);padding:14px;border-radius:12px;text-align:center;min-width:145px}
+.arrow{font-size:25px;color:var(--gold)}
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:12px;overflow:hidden}
+th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#1a304f;color:var(--gold)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:12px 15px}
+summary{cursor:pointer;font-weight:800;color:var(--gold)}
+.quiz{background:linear-gradient(145deg,#101d31,#182b48);border:1px solid var(--line);border-radius:16px;padding:20px}
+.q{padding:17px 0;border-bottom:1px solid var(--line)}
+.option{display:block;margin:7px 0;padding:10px;border:1px solid #35506f;border-radius:9px;cursor:pointer}
+.option:hover{background:#203957}
+button{border:0;border-radius:10px;padding:11px 17px;font-weight:800;cursor:pointer}
+.primary{background:var(--gold);color:#1a1307}
+.secondary{background:#29486e;color:white}
+.result{margin-top:15px;padding:15px;border-radius:12px;background:#0c1728}
+.correct{color:var(--green)}.wrong{color:var(--red)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.must{font-size:18px;font-weight:800;color:#fff}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.correction-box{margin-top:12px;padding:14px;border-radius:12px;background:#0b1728;border:1px solid #35506f}
+.correction-box h4{margin:5px 0;color:var(--gold)}
+.correction-step{padding:9px 11px;margin:7px 0;border-left:4px solid var(--blue);background:rgba(102,167,255,.08);border-radius:7px}
+.mnemonic{padding:10px 12px;margin-top:9px;border:1px solid rgba(73,212,157,.4);background:rgba(73,212,157,.09);border-radius:9px;color:#dfffee}
+.retry-mini{margin-top:10px;padding:11px;background:rgba(245,196,81,.08);border:1px solid rgba(245,196,81,.35);border-radius:9px}
+@media(max-width:700px){.two-col{grid-template-columns:1fr}.t-item{grid-template-columns:80px 1fr}}
+@media print{
+  body{background:white;color:#111}
+  nav,.toolbar,.quiz button{display:none!important}
+  .card,.quiz,details,table{background:white;color:#111;box-shadow:none;border:1px solid #bbb}
+  h1,h2,h3,.section-title,.keyword,strong,th,summary{color:#111!important}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>BAB 5</h1>
+  <h2>KESULTANAN MELAYU MELAKA</h2>
+  <p>考前精准复习笔记｜BM 主考 + 华语辅助理解｜依据课本 5.1、5.2、5.3 整理</p>
+  <div class="badges">
+    <span class="badge">建立 Pengasasan</span>
+    <span class="badge">辉煌 Kegemilangan</span>
+    <span class="badge">结束 Pengakhiran</span>
+  </div>
+</header>
+
+<nav>
+<a href="#map">总览</a><a href="#s51">5.1</a><a href="#s52">5.2</a><a href="#pentadbiran">职位</a>
+<a href="#undang">法律</a><a href="#aspek">辉煌表现</a><a href="#s53">5.3</a><a href="#exam">考试模板</a><a href="#quiz">Quiz</a>
+</nav>
+
+<main>
+<div class="toolbar">
+<button class="primary" onclick="window.print()">打印 / 存成 PDF</button>
+<button class="secondary" onclick="document.body.classList.toggle('focus')">专注复习</button>
+</div>
+
+<section id="map">
+<div class="section-title"><div class="num">0</div><div><h2>一张图看懂整章</h2><div class="zh">整章主线：建立 → 强盛 → 葡萄牙占领马六甲</div></div></div>
+<div class="flow">
+<div class="step"><strong>约 1400</strong><br>Parameswara<br>mengasaskan Melaka</div><div class="arrow">→</div>
+<div class="step"><strong>Lokasi strategik</strong><br>地点优越</div><div class="arrow">→</div>
+<div class="step"><strong>Kerajaan gemilang</strong><br>政治、贸易、伊斯兰</div><div class="arrow">→</div>
+<div class="step"><strong>24 Ogos 1511</strong><br>Melaka dikuasai Portugis</div>
+</div>
+</section>
+
+<section id="s51">
+<div class="section-title"><div class="num">5.1</div><div><h2>Pengasasan Kesultanan Melayu Melaka</h2><div class="zh">马六甲王朝的建立</div></div></div>
+<div class="grid">
+<div class="card"><h3>Pengasas</h3><p class="must">Parameswara</p><p>Mengasaskan Kesultanan Melayu Melaka sekitar <strong>tahun 1400</strong>.</p><div class="exam">高频题：Siapakah pengasas Kesultanan Melayu Melaka?</div></div>
+<div class="card"><h3>Lokasi</h3><p>Muara <strong>Sungai Bertam</strong>, juga dikenali sebagai <strong>Sungai Melaka</strong>.</p><div class="zh">位于河口，原本是渔村、买卖及交换货物的地点。</div></div>
+</div>
+<h3>四个选址原因：口诀 L-B-B-M</h3>
+<div class="grid">
+<div class="card"><strong>Laluan perdagangan</strong><p>Terletak di laluan utama antara timur dengan barat dan dapat mengawal laluan kapal dagang.</p><div class="zh">位于东西方主要贸易航线。</div></div>
+<div class="card"><strong>Bentuk muka bumi</strong><p>Kawasan berbukit-bukau sesuai sebagai benteng pertahanan dan panduan kapal dagang.</p><div class="zh">丘陵地形可防守，也能成为船只辨认方向的标志。</div></div>
+<div class="card"><strong>Benteng pertahanan</strong><p>Pokok bakau dan api-api menjadi pelindung semula jadi yang sukar ditembusi musuh.</p><div class="zh">红树林形成天然防线。</div></div>
+<div class="card"><strong>Monsun terlindung</strong><p>Muara sungai terlindung daripada tiupan angin monsun; kapal dapat berlabuh dengan selamat.</p><div class="zh">避开季候风，船只可安全停泊。</div></div>
+</div>
+<div class="memory"><strong>标准答法：</strong> Parameswara memilih Melaka kerana terletak di laluan perdagangan, mempunyai bentuk muka bumi berbukit-bukau, benteng pertahanan semula jadi serta terlindung daripada tiupan angin monsun.</div>
+</section>
+
+<section id="s52">
+<div class="section-title"><div class="num">5.2</div><div><h2>Kegemilangan Kesultanan Melayu Melaka</h2><div class="zh">马六甲王朝的辉煌</div></div></div>
+<div class="card">
+<h3>三大因素：R-P-U</h3>
+<span class="keyword">Raja berwibawa</span><span class="keyword">Pentadbiran cekap</span><span class="keyword">Undang-undang tersusun</span>
+<div class="zh">有威望的国王 + 高效行政 + 完整法律 = 国家稳定繁荣。</div>
+</div>
+
+<h3>Kepemimpinan Raja</h3>
+<div class="grid">
+<div class="card"><strong>Keturunan Raja Palembang</strong><p>Susur galur pemerintah memberikan taraf tinggi kepada Sultan Melaka dalam kalangan kerajaan Alam Melayu.</p></div>
+<div class="card"><strong>Peranan unggul</strong><p>Simbol perpaduan, ketua tentera, mengetuai diplomatik, menyelaraskan ekonomi, Ketua Agama Islam dan menegakkan keadilan.</p></div>
+<div class="card"><strong>Daulat dan alat kebesaran</strong><p>Daulat ialah kuasa dan kewibawaan raja. Alat kebesaran: cap mohor, nobat, keris, lembing dan mahkota.</p></div>
+<div class="card"><strong>Kewibawaan</strong><p>Raja bersikap adil, berwibawa, menjaga kebajikan rakyat dan memerintah mengikut Hukum Kanun Melaka.</p></div>
+</div>
+</section>
+
+<section id="pentadbiran">
+<div class="section-title"><div class="num">P</div><div><h2>Sistem Pentadbiran</h2><div class="zh">行政制度：Sistem Pembesar Empat Lipatan</div></div></div>
+<div class="card">
+<p><strong>Sultan</strong> berada di puncak. Baginda dibantu oleh pembesar berempat, berlapan, enam belas dan tiga puluh dua.</p>
+<p>Tugas umum pembesar: menjaga keamanan, mengutip cukai melalui sistem serah, membekalkan tentera dan tenaga buruh melalui sistem kerah.</p>
+</div>
+<div style="overflow:auto">
+<table>
+<tr><th>Jawatan</th><th>Tugas penting课本关键词</th><th>快速记忆</th></tr>
+<tr><td><strong>Bendahara</strong></td><td>Penasihat raja; menteri utama; ketua turus angkatan perang; ketua hakim; pemangku sultan.</td><td>首相 + 顾问 + 军事 + 法官</td></tr>
+<tr><td><strong>Penghulu Bendahari</strong></td><td>Pemungut hasil atau ufti; ketua segala bendahari; ketua urus setia istana; ketua syahbandar.</td><td>财政 + 收税</td></tr>
+<tr><td><strong>Temenggung</strong></td><td>Ketua polis dan penjara; penguasa bandar dan kota Melaka; pegawai protokol; hakim di darat.</td><td>治安 + 监狱 + 城市</td></tr>
+<tr><td><strong>Laksamana</strong></td><td>Ketua angkatan laut; pengawal peribadi raja; ketua duta; ketua utusan; hakim di laut.</td><td>海军 + 外交 + 海上法官</td></tr>
+</table>
+</div>
+<div class="memory"><strong>别背错：</strong> Laksamana 不只是海军；他也是 ketua duta、utusan dan hakim di laut。</div>
+</section>
+
+<section id="undang">
+<div class="section-title"><div class="num">U</div><div><h2>Sistem Perundangan</h2><div class="zh">法律制度</div></div></div>
+<div class="two-col">
+<div class="card">
+<h3>Hukum Kanun Melaka</h3>
+<p>Mula ditulis pada zaman <strong>Sultan Muzaffar Shah</strong> dan disusun semula pada zaman <strong>Sultan Mahmud Shah</strong>.</p>
+<p><strong>44 fasal</strong>: hak keistimewaan, tanggungjawab raja dan pembesar, jenayah, jual beli dan kekeluargaan.</p>
+<div class="zh">主要管国内秩序，保障人民安全。</div>
+</div>
+<div class="card">
+<h3>Undang-Undang Laut Melaka</h3>
+<p>Ditulis pada zaman <strong>Sultan Mahmud Shah</strong>.</p>
+<p><strong>25 fasal</strong>: pelayaran, perdagangan, tertib berniaga, jual beli serta tanggungjawab nakhoda, anak kapal, kiwi dan syahbandar.</p>
+<div class="zh">主要管海上航行与贸易。</div>
+</div>
+</div>
+<div class="card">
+<h3>Adat Temenggung</h3>
+<p>Diasaskan oleh Datuk Ketemenggungan. Berkaitan pemerintahan, perwarisan takhta, perkahwinan, harta dan perundangan. Takhta diwarisi oleh <strong>anak lelaki sulung</strong>.</p>
+</div>
+</section>
+
+<section id="aspek">
+<div class="section-title"><div class="num">A</div><div><h2>Aspek Kegemilangan</h2><div class="zh">马六甲辉煌的表现</div></div></div>
+<div class="grid">
+<div class="card"><h3>Empayar luas</h3><p>Meliputi Semenanjung Tanah Melayu dan pantai timur Sumatera.</p><p><strong>Cara:</strong> penaklukan, perkahwinan dan naungan.</p></div>
+<div class="card"><h3>Pusat Islam</h3><p>Tumpuan ulama, tempat pembelajaran, perkembangan Jawi dan bahasa Melayu serta pelaksanaan undang-undang Islam.</p></div>
+<div class="card"><h3>Pusat perdagangan</h3><p>Kedudukan strategik, barangan pelbagai, pedagang antarabangsa dan bahasa Melayu sebagai lingua franca.</p></div>
+<div class="card"><h3>Pengurusan perdagangan</h3><p>Syahbandar, cukai, mata wang, Orang Laut dan kemudahan pelabuhan menjamin urusan lancar.</p></div>
+<div class="card"><h3>Hubungan luar</h3><p>Hubungan diplomatik dan perdagangan mengukuhkan keselamatan serta kedudukan Melaka.</p></div>
+</div>
+<details><summary>Kepentingan pembentukan empayar</summary>
+<p><strong>Politik:</strong> meluaskan wilayah, mengukuhkan hubungan dan menyekat pengaruh Siam, Majapahit serta Pasai.</p>
+<p><strong>Ekonomi:</strong> menerima ufti, bekalan dagangan dan menguasai perdagangan Selat Melaka.</p>
+<p><strong>Sosial:</strong> asimilasi budaya dan pembentukan masyarakat majmuk.</p>
+<p><strong>Agama:</strong> menyebarkan Islam ke kawasan lain.</p>
+</details>
+</section>
+
+<section id="s53">
+<div class="section-title"><div class="num">5.3</div><div><h2>Pengakhiran Pemerintahan Berpusat di Melaka</h2><div class="zh">以马六甲为中心的统治结束</div></div></div>
+<div class="grid">
+<div class="card"><h3>Matlamat Portugis</h3><p><strong>Kekayaan, keagamaan dan kemasyhuran.</strong></p><p>Menguasai perdagangan rempah, menyebarkan agama Kristian dan menghapuskan penguasaan pedagang Islam.</p></div>
+<div class="card"><h3>Tarikh penting</h3><p>Lopez de Sequeira tiba pada <strong>11 September 1509</strong>.</p><p>Serangan Portugis: <strong>25 Julai, 10 Ogos dan 24 Ogos 1511</strong>.</p></div>
+<div class="card"><h3>Pemimpin Portugis</h3><p class="must">Alfonso de Albuquerque</p><div class="zh">率领葡萄牙军队攻打马六甲。</div></div>
+<div class="card"><h3>Tarikh berakhir</h3><p class="must">24 Ogos 1511</p><p>Pemerintahan Kesultanan Melayu Melaka yang berpusat di Melaka berakhir.</p></div>
+</div>
+
+<h3>Strategi Melaka menghadapi serangan</h3>
+<div class="grid">
+<div class="card">Menggunakan <strong>lancaran dan perahu berapi</strong>.</div>
+<div class="card">Memperkukuh pantai dengan <strong>kayu-kayan, meriam dan serbuk peluru</strong>.</div>
+<div class="card">Melakukan <strong>tembakan meriam bertalu-talu</strong> dari pantai.</div>
+<div class="card">Menggunakan <strong>tentera bergajah</strong>.</div>
+</div>
+
+<h3>Perjuangan mengembalikan kedaulatan</h3>
+<div class="timeline">
+<div class="t-item"><div class="year">1511</div><div class="card">Sultan Mahmud Shah berundur ke wilayah naungan dan jajahan sebelum bersemayam di Bentan.</div></div>
+<div class="t-item"><div class="year">1515–1519</div><div class="card">Baginda melakukan tiga kali serangan untuk mendapatkan semula Melaka tetapi gagal.</div></div>
+<div class="t-item"><div class="year">1526</div><div class="card">Pusat pemerintahan di Bentan dimusnahkan Portugis.</div></div>
+<div class="t-item"><div class="year">1528</div><div class="card">Sultan Mahmud Shah berundur ke Kampar dan mangkat.</div></div>
+</div>
+<div class="exam"><strong>重点理解：</strong> 马六甲城失守，不代表马六甲王朝的政治遗产完全消失；其传统由 Kesultanan Johor Riau 继续继承。</div>
+</section>
+
+<section id="exam">
+<div class="section-title"><div class="num">E</div><div><h2>考试作答模板</h2><div class="zh">题目要求什么，就用什么结构写</div></div></div>
+<details open><summary>Nyatakan / Senaraikan（列出）</summary><p>只写事实，不需要解释。例：Laluan perdagangan; bentuk muka bumi; benteng pertahanan; terlindung angin monsun.</p></details>
+<details><summary>Jelaskan / Huraikan（解释）</summary><p><strong>Fakta + Huraian</strong><br>Melaka terletak di laluan perdagangan utama. Keadaan ini membolehkannya mengawal laluan kapal dagang antara timur dengan barat.</p></details>
+<details><summary>Mengapakah（为什么）</summary><p>写原因 + 造成的结果。避免只抄关键词。</p></details>
+<details><summary>KBAT 万用方向</summary><p>Perpaduan, kepemimpinan berwibawa, pematuhan undang-undang, kebijaksanaan strategi, menjaga kedaulatan dan hubungan diplomatik.</p></details>
+<div class="card">
+<h3>考前最后必背 12 项</h3>
+<div class="grid">
+<div>1. Parameswara</div><div>2. Sekitar 1400</div><div>3. Sungai Bertam / Sungai Melaka</div>
+<div>4. Empat faktor lokasi</div><div>5. R-P-U</div><div>6. Sistem Pembesar Empat Lipatan</div>
+<div>7. Empat jawatan dan tugas</div><div>8. HKM = 44 fasal</div><div>9. UULM = 25 fasal</div>
+<div>10. Penaklukan–Perkahwinan–Naungan</div><div>11. Alfonso de Albuquerque</div><div>12. 24 Ogos 1511</div>
+</div>
+</div>
+</section>
+
+<section id="quiz">
+<div class="section-title"><div class="num">Q</div><div><h2>Bab 5 Mastery Test</h2><div class="zh">完整掌握测试｜基础 + 职位 + 法律 + 时间线 + 结构题 + KBAT</div></div></div>
+
+<div class="card">
+  <h3>掌握标准</h3>
+  <p>学生需要同时达到以下条件，才算真正掌握 Bab 5：</p>
+  <div class="grid">
+    <div><strong>总分：</strong>至少 85%</div>
+    <div><strong>5.1：</strong>至少 80%</div>
+    <div><strong>5.2：</strong>至少 80%</div>
+    <div><strong>5.3：</strong>至少 80%</div>
+    <div><strong>职位题：</strong>至少 8/10</div>
+    <div><strong>结构题：</strong>必须会写 Fakta + Huraian</div>
+  </div>
+</div>
+
+<div class="quiz" id="masteryQuiz"></div>
+</section>
+
+</main>
+
+<script>
+const mcqQuestions = [
+{part:"5.1",cat:"基础",q:"Siapakah pengasas Kesultanan Melayu Melaka?",o:["Sultan Mahmud Shah","Parameswara","Tun Perak","Alfonso de Albuquerque"],a:1,e:"Parameswara mengasaskan Kesultanan Melayu Melaka sekitar tahun 1400."},
+{part:"5.1",cat:"基础",q:"Kesultanan Melayu Melaka diasaskan sekitar tahun...",o:["1200","1300","1400","1511"],a:2,e:"课本关键词：sekitar tahun 1400."},
+{part:"5.1",cat:"基础",q:"Apakah nama lain bagi Sungai Bertam?",o:["Sungai Melaka","Sungai Johor","Sungai Muar","Sungai Pahang"],a:0,e:"Muara Sungai Bertam juga dikenali sebagai Sungai Melaka."},
+{part:"5.1",cat:"选址",q:"Mengapakah laluan perdagangan penting kepada Melaka?",o:["Membolehkan Melaka mengawal kapal dagang timur dan barat","Membolehkan penanaman padi secara besar-besaran","Membolehkan pembinaan istana batu","Membolehkan rakyat berpindah ke Siam"],a:0,e:"位置处于东西贸易主航线，可控制商船往来。"},
+{part:"5.1",cat:"选址",q:"Apakah kegunaan kawasan berbukit-bukau kepada Melaka?",o:["Kawasan pertanian","Benteng pertahanan dan panduan kapal","Tempat menyimpan hasil cukai","Pusat penternakan"],a:1,e:"丘陵可作为防御，也能成为船只的航行标志。"},
+{part:"5.1",cat:"选址",q:"Pokok bakau dan api-api berfungsi sebagai...",o:["Sumber makanan utama","Benteng pertahanan semula jadi","Tempat menyimpan senjata","Pusat penyebaran Islam"],a:1,e:"红树林形成敌人难以穿越的天然防线。"},
+{part:"5.1",cat:"选址",q:"Muara sungai yang terlindung daripada angin monsun membolehkan...",o:["kapal berlabuh dengan selamat","tentera menyerang Siam","cukai dihapuskan","istana dibina di laut"],a:0,e:"避开季候风可让船只安全停泊。"},
+{part:"5.2",cat:"辉煌",q:"Apakah tiga faktor utama kegemilangan Melaka?",o:["Raja, pentadbiran dan perundangan","Pertanian, perlombongan dan perikanan","Bahasa, tulisan dan seni bina","Tentera, hamba dan ufti"],a:0,e:"口诀 R-P-U：raja berwibawa, pentadbiran cekap, perundangan tersusun."},
+{part:"5.2",cat:"国王",q:"Antara berikut, yang manakah peranan Sultan Melaka?",o:["Ketua agama Islam","Ketua syahbandar","Ketua penjara sahaja","Pemungut cukai pelabuhan sahaja"],a:0,e:"Sultan ialah simbol perpaduan, ketua tentera, ketua agama Islam dan penegak keadilan."},
+{part:"5.2",cat:"国王",q:"Apakah maksud daulat?",o:["Cukai pelabuhan","Kuasa dan kewibawaan raja","Harta pedagang","Peraturan pelayaran"],a:1,e:"Daulat bermaksud kuasa dan kewibawaan raja."},
+{part:"5.2",cat:"国王",q:"Yang manakah alat kebesaran diraja?",o:["Cap mohor","Kompas","Jala ikan","Timbangan"],a:0,e:"Antara alat kebesaran: cap mohor, nobat, keris, lembing dan mahkota."},
+
+{part:"5.2",cat:"职位",q:"Siapakah penasihat raja dan menteri utama?",o:["Bendahara","Temenggung","Laksamana","Syahbandar"],a:0,e:"Bendahara ialah penasihat raja dan menteri utama."},
+{part:"5.2",cat:"职位",q:"Siapakah ketua turus angkatan perang?",o:["Penghulu Bendahari","Bendahara","Temenggung","Nakhoda"],a:1,e:"Bendahara juga menjadi ketua turus angkatan perang."},
+{part:"5.2",cat:"职位",q:"Siapakah pemangku sultan?",o:["Laksamana","Temenggung","Bendahara","Syahbandar"],a:2,e:"Bendahara menjalankan tugas sebagai pemangku sultan."},
+{part:"5.2",cat:"职位",q:"Siapakah pemungut hasil atau ufti?",o:["Penghulu Bendahari","Temenggung","Laksamana","Bendahara"],a:0,e:"Penghulu Bendahari mengurus hasil, ufti dan kewangan."},
+{part:"5.2",cat:"职位",q:"Siapakah ketua segala bendahari?",o:["Temenggung","Penghulu Bendahari","Laksamana","Syahbandar"],a:1,e:"Jawatan ini mengetuai segala bendahari."},
+{part:"5.2",cat:"职位",q:"Siapakah ketua polis dan penjara?",o:["Bendahara","Temenggung","Laksamana","Penghulu Bendahari"],a:1,e:"Temenggung menjaga polis, penjara, bandar dan kota."},
+{part:"5.2",cat:"职位",q:"Siapakah hakim di darat?",o:["Temenggung","Laksamana","Bendahara","Nakhoda"],a:0,e:"Temenggung bertindak sebagai hakim di darat."},
+{part:"5.2",cat:"职位",q:"Siapakah ketua angkatan laut?",o:["Temenggung","Laksamana","Bendahara","Syahbandar"],a:1,e:"Laksamana mengetuai angkatan laut."},
+{part:"5.2",cat:"职位",q:"Siapakah ketua duta dan ketua utusan?",o:["Penghulu Bendahari","Laksamana","Temenggung","Bendahara"],a:1,e:"Laksamana turut menjadi ketua duta dan ketua utusan."},
+{part:"5.2",cat:"职位",q:"Siapakah hakim di laut?",o:["Temenggung","Bendahara","Laksamana","Penghulu Bendahari"],a:2,e:"Laksamana ialah hakim di laut."},
+
+{part:"5.2",cat:"法律",q:"Hukum Kanun Melaka mengandungi berapa fasal?",o:["25","44","32","16"],a:1,e:"Hukum Kanun Melaka mempunyai 44 fasal."},
+{part:"5.2",cat:"法律",q:"Undang-Undang Laut Melaka mengandungi berapa fasal?",o:["44","25","20","52"],a:1,e:"Undang-Undang Laut Melaka mempunyai 25 fasal."},
+{part:"5.2",cat:"法律",q:"Hukum Kanun Melaka mula ditulis pada zaman...",o:["Sultan Muzaffar Shah","Sultan Mahmud Shah","Sultan Mansur Shah","Sultan Alauddin Riayat Shah"],a:0,e:"HKM mula ditulis pada zaman Sultan Muzaffar Shah."},
+{part:"5.2",cat:"法律",q:"Hukum Kanun Melaka disusun semula pada zaman...",o:["Sultan Muzaffar Shah","Sultan Mahmud Shah","Parameswara","Sultan Mansur Shah"],a:1,e:"HKM disusun semula pada zaman Sultan Mahmud Shah."},
+{part:"5.2",cat:"法律",q:"Undang-Undang Laut Melaka ditulis pada zaman...",o:["Sultan Mahmud Shah","Parameswara","Sultan Muzaffar Shah","Sultan Mansur Shah"],a:0,e:"Undang-Undang Laut Melaka ditulis pada zaman Sultan Mahmud Shah."},
+{part:"5.2",cat:"法律",q:"Yang manakah kandungan Hukum Kanun Melaka?",o:["Jenayah dan kekeluargaan","Tugas nakhoda sahaja","Pelayaran sahaja","Peraturan kapal sahaja"],a:0,e:"HKM涉及王权、行政、犯罪、买卖与家庭事务。"},
+{part:"5.2",cat:"法律",q:"Yang manakah kandungan Undang-Undang Laut Melaka?",o:["Pelayaran dan tanggungjawab nakhoda","Perwarisan takhta sahaja","Pertanian dan penternakan","Pembinaan istana"],a:0,e:"UULM涉及航海、贸易、船长、船员、kiwi与syahbandar的职责。"},
+{part:"5.2",cat:"法律",q:"Dalam Adat Temenggung, takhta diwarisi oleh...",o:["anak perempuan bongsu","anak lelaki sulung","saudara pedagang","ketua syahbandar"],a:1,e:"Takhta diwarisi oleh anak lelaki sulung."},
+
+{part:"5.2",cat:"帝国",q:"Bagaimanakah empayar Melaka dibentuk?",o:["Penaklukan, perkahwinan dan naungan","Pertanian, perdagangan dan pelayaran","Serah, kerah dan ufti","Bahasa, tulisan dan agama"],a:0,e:"三种方式：penaklukan, perkahwinan dan naungan."},
+{part:"5.2",cat:"帝国",q:"Apakah kepentingan empayar dari aspek politik?",o:["Meluaskan wilayah dan menyekat pengaruh kuasa lain","Menghapuskan semua perdagangan","Mengurangkan jumlah penduduk","Menutup pelabuhan"],a:0,e:"政治方面包括扩大版图、巩固关系及阻止Siam、Majapahit和Pasai影响。"},
+{part:"5.2",cat:"帝国",q:"Apakah kepentingan empayar dari aspek ekonomi?",o:["Menerima ufti dan menguasai perdagangan","Menghapuskan cukai sepenuhnya","Menutup laluan kapal","Mengurangkan barangan dagangan"],a:0,e:"经济上可获得贡品、货物，并控制马六甲海峡贸易。"},
+{part:"5.2",cat:"贸易",q:"Bahasa Melayu digunakan sebagai...",o:["lingua franca","bahasa rahsia istana","bahasa Portugis","bahasa undang-undang Eropah"],a:0,e:"Bahasa Melayu menjadi bahasa perantaraan atau lingua franca."},
+{part:"5.2",cat:"贸易",q:"Siapakah yang mengurus pelabuhan dan pedagang?",o:["Syahbandar","Temenggung","Bendahara","Penghulu Bendahari"],a:0,e:"Syahbandar mengurus pelabuhan dan hal pedagang."},
+{part:"5.2",cat:"伊斯兰",q:"Mengapakah Melaka terkenal sebagai pusat Islam?",o:["Menjadi tumpuan ulama dan pusat pembelajaran","Menjadi pusat agama Kristian","Menutup pengajian agama","Melarang tulisan Jawi"],a:0,e:"Melaka menjadi tumpuan ulama, pusat pembelajaran, perkembangan Jawi dan bahasa Melayu."},
+
+{part:"5.3",cat:"葡萄牙",q:"Apakah matlamat utama Portugis?",o:["Kekayaan, keagamaan dan kemasyhuran","Pertanian, pendidikan dan bahasa","Perkahwinan, naungan dan penaklukan","Cukai, serah dan kerah"],a:0,e:"课本三项：kekayaan, keagamaan dan kemasyhuran."},
+{part:"5.3",cat:"葡萄牙",q:"Siapakah yang tiba di Melaka pada 11 September 1509?",o:["Lopez de Sequeira","Alfonso de Albuquerque","Sultan Mahmud Shah","Parameswara"],a:0,e:"Lopez de Sequeira tiba di Melaka pada 11 September 1509."},
+{part:"5.3",cat:"葡萄牙",q:"Siapakah yang memimpin serangan Portugis pada tahun 1511?",o:["Lopez de Sequeira","Alfonso de Albuquerque","Tun Perak","Bendahara"],a:1,e:"Alfonso de Albuquerque memimpin serangan Portugis."},
+{part:"5.3",cat:"时间线",q:"Serangan pertama Portugis berlaku pada...",o:["25 Julai 1511","10 Ogos 1511","24 Ogos 1511","11 September 1509"],a:0,e:"Serangan pertama berlaku pada 25 Julai 1511."},
+{part:"5.3",cat:"时间线",q:"Serangan seterusnya berlaku pada...",o:["10 Ogos 1511","24 Ogos 1511","1526","1528"],a:0,e:"Serangan berikutnya berlaku pada 10 Ogos 1511."},
+{part:"5.3",cat:"时间线",q:"Bilakah pemerintahan Melaka yang berpusat di Melaka berakhir?",o:["24 Ogos 1511","25 Julai 1511","11 September 1509","1528"],a:0,e:"Tarikh tepat：24 Ogos 1511."},
+{part:"5.3",cat:"策略",q:"Yang manakah strategi Melaka menghadapi Portugis?",o:["Menggunakan lancaran dan perahu berapi","Menyerah tanpa melawan","Menutup semua sungai","Meminta bantuan Portugis"],a:0,e:"Melaka menggunakan lancaran, perahu berapi, meriam, serbuk peluru dan tentera bergajah."},
+{part:"5.3",cat:"策略",q:"Apakah fungsi kayu-kayan, meriam dan serbuk peluru di pantai?",o:["Memperkukuh pertahanan pantai","Membina pasar","Membina istana","Menghias pelabuhan"],a:0,e:"这些用来加强沿海防御。"},
+{part:"5.3",cat:"策略",q:"Apakah jenis tentera yang turut digunakan Melaka?",o:["Tentera bergajah","Tentera berkuda Portugis","Tentera udara","Tentera kereta kebal"],a:0,e:"Melaka menggunakan tentera bergajah."},
+{part:"5.3",cat:"时间线",q:"Pusat pemerintahan di Bentan dimusnahkan Portugis pada...",o:["1511","1519","1526","1528"],a:2,e:"Bentan dimusnahkan pada tahun 1526."},
+{part:"5.3",cat:"时间线",q:"Sultan Mahmud Shah mangkat di Kampar pada...",o:["1509","1511","1526","1528"],a:3,e:"Baginda mangkat di Kampar pada tahun 1528."},
+{part:"5.3",cat:"延续",q:"Siapakah yang meneruskan legasi Kesultanan Melayu Melaka?",o:["Kesultanan Johor Riau","Kerajaan Portugis","Kerajaan Siam","Kerajaan Majapahit"],a:0,e:"Warisan Melaka diteruskan oleh Kesultanan Johor Riau."}
+];
+
+const structuredQuestions = [
+{part:"5.1",q:"Jelaskan dua faktor Parameswara memilih Melaka sebagai pusat pemerintahan.",keys:["laluan perdagangan","bentuk muka bumi","benteng pertahanan","angin monsun","kapal berlabuh","timur","barat"],sample:"Melaka terletak di laluan perdagangan utama antara timur dengan barat. Kedudukan ini membolehkan Melaka mengawal pergerakan kapal dagang. Selain itu, muara sungainya terlindung daripada angin monsun, maka kapal dapat berlabuh dengan selamat."},
+{part:"5.2",q:"Jelaskan dua peranan Bendahara.",keys:["penasihat raja","menteri utama","ketua turus angkatan perang","ketua hakim","pemangku sultan"],sample:"Bendahara menjadi penasihat raja dan menteri utama. Beliau juga menjadi ketua turus angkatan perang serta pemangku sultan."},
+{part:"5.2",q:"Bandingkan Hukum Kanun Melaka dengan Undang-Undang Laut Melaka.",keys:["44 fasal","25 fasal","jenayah","kekeluargaan","pelayaran","nakhoda","anak kapal","perdagangan"],sample:"Hukum Kanun Melaka mempunyai 44 fasal dan berkaitan jenayah, jual beli serta kekeluargaan. Undang-Undang Laut Melaka pula mempunyai 25 fasal dan berkaitan pelayaran, perdagangan serta tanggungjawab nakhoda dan anak kapal."},
+{part:"5.2",q:"Jelaskan dua kepentingan pembentukan empayar Melaka.",keys:["meluaskan wilayah","menyekat pengaruh","menerima ufti","menguasai perdagangan","asimilasi budaya","menyebarkan Islam"],sample:"Pembentukan empayar membolehkan Melaka meluaskan wilayah dan menyekat pengaruh kuasa lain. Melaka juga menerima ufti serta menguasai perdagangan di Selat Melaka."},
+{part:"5.2",q:"Mengapakah Melaka menjadi pusat perdagangan yang terkenal?",keys:["kedudukan strategik","pelbagai barang","pedagang antarabangsa","lingua franca","syahbandar","cukai","mata wang","kemudahan pelabuhan"],sample:"Melaka mempunyai kedudukan strategik dan dikunjungi pedagang antarabangsa. Pengurusan syahbandar, penggunaan mata wang serta kemudahan pelabuhan juga melancarkan perdagangan."},
+{part:"5.3",q:"Jelaskan dua strategi Melaka menghadapi serangan Portugis.",keys:["lancaran","perahu berapi","kayu-kayan","meriam","serbuk peluru","tentera bergajah","tembakan meriam"],sample:"Melaka menggunakan lancaran dan perahu berapi. Pertahanan pantai turut diperkukuh dengan kayu-kayan, meriam dan serbuk peluru."}
+];
+
+const kbatQuestions = [
+{q:"Apakah iktibar daripada kejatuhan Kesultanan Melayu Melaka?",keys:["perpaduan","kedaulatan","pemimpin","strategi","pertahanan","kuasa asing"],sample:"Kita hendaklah mengekalkan perpaduan supaya negara tidak mudah dikuasai oleh kuasa asing. Pemimpin juga perlu merancang strategi pertahanan yang berkesan untuk menjaga kedaulatan negara."},
+{q:"Mengapakah undang-undang penting kepada sesebuah negara?",keys:["keamanan","keadilan","disiplin","jenayah","hak","stabil"],sample:"Undang-undang penting untuk menjamin keamanan dan keadilan. Peraturan yang jelas dapat mengawal jenayah, melindungi hak rakyat dan memastikan negara stabil."},
+{q:"Bagaimanakah generasi muda boleh mempertahankan kedaulatan negara?",keys:["patriotisme","perpaduan","undang-undang","ilmu","keselamatan","tanggungjawab"],sample:"Generasi muda perlu memupuk patriotisme, menjaga perpaduan dan mematuhi undang-undang. Mereka juga mesti menuntut ilmu serta bertanggungjawab terhadap keselamatan negara."}
+];
+
+let attempt = 1;
+
+function renderQuiz(){
+ const box=document.getElementById("masteryQuiz");
+ let html=`<div class="card"><strong>Percubaan / 尝试次数：</strong> <span id="attemptNo">${attempt}</span></div>`;
+ html += `<h3>Part A–E：客观题（${mcqQuestions.length}题）</h3>`;
+ mcqQuestions.forEach((x,i)=>{
+   html += `<div class="q" data-part="${x.part}" data-cat="${x.cat}">
+   <strong>${i+1}. ${x.q}</strong>
+   ${x.o.map((v,j)=>`<label class="option"><input type="radio" name="m${i}" value="${j}"> ${v}</label>`).join("")}
+   <div id="mexp${i}"></div></div>`;
+ });
+ html += `<h3>Part F：结构题（6题）</h3>`;
+ structuredQuestions.forEach((x,i)=>{
+   html += `<div class="q"><strong>S${i+1}. ${x.q}</strong>
+   <textarea id="s${i}" rows="4" style="width:100%;margin-top:10px;padding:12px;border-radius:10px;border:1px solid #35506f;background:#0d1a2c;color:white" placeholder="用 BM 写 Fakta + Huraian"></textarea>
+   <div id="sexp${i}"></div></div>`;
+ });
+ html += `<h3>Part G：KBAT（3题）</h3>`;
+ kbatQuestions.forEach((x,i)=>{
+   html += `<div class="q"><strong>K${i+1}. ${x.q}</strong>
+   <textarea id="k${i}" rows="4" style="width:100%;margin-top:10px;padding:12px;border-radius:10px;border:1px solid #35506f;background:#0d1a2c;color:white" placeholder="观点 + 解释 + 价值"></textarea>
+   <div id="kexp${i}"></div></div>`;
+ });
+ html += `<div class="toolbar">
+ <button class="primary" onclick="checkMastery()">Semak Semua / 全部批改</button>
+ <button class="secondary" onclick="retryWrong()">重做错题</button>
+ <button class="secondary" onclick="resetMastery()">重新测试</button>
+ </div><div class="result" id="masteryResult" style="display:none"></div>`;
+ box.innerHTML=html;
+}
+
+function keywordScore(text, keys){
+ text=(text||"").toLowerCase();
+ return keys.filter(k=>text.includes(k.toLowerCase())).length;
+}
+
+function getMnemonic(x){
+ const q=x.q.toLowerCase();
+ if(x.part==="5.1"){
+   if(q.includes("pengasas")||q.includes("1400")) return "口诀：P-1400 = Parameswara sekitar 1400.";
+   if(q.includes("sungai bertam")) return "口诀：Bertam = Melaka（Sungai Bertam ialah Sungai Melaka）.";
+   return "口诀 L-B-B-M：Laluan perdagangan, Bentuk muka bumi, Benteng pertahanan, Monsun terlindung.";
+ }
+ if(x.cat==="职位"){
+   if(q.includes("bendahara")) return "口诀 Bendahara = PM：Penasihat + Menteri utama + Pemangku Sultan.";
+   if(q.includes("penghulu bendahari")||q.includes("hasil")||q.includes("ufti")) return "口诀 Penghulu Bendahari = MONEY：hasil, ufti, kewangan.";
+   if(q.includes("polis")||q.includes("penjara")||q.includes("darat")) return "口诀 Temenggung = POLICE：polis, penjara, bandar, hakim darat.";
+   return "口诀 Laksamana = NAVY：laut, duta, utusan, hakim laut.";
+ }
+ if(x.cat==="法律"){
+   if(q.includes("hukum kanun")) return "口诀 HKM = DARAT = 44：jenayah, jual beli, keluarga, pentadbiran.";
+   if(q.includes("undang-undang laut")) return "口诀 UULM = LAUT = 25：pelayaran, perdagangan, nakhoda, anak kapal.";
+   return "口诀 Adat Temenggung：takhta kepada anak lelaki sulung.";
+ }
+ if(x.cat==="帝国") return "口诀 P-P-N：Penaklukan, Perkahwinan, Naungan.";
+ if(x.cat==="贸易") return "口诀 S-C-M-O：Syahbandar, Cukai, Mata wang, Orang Laut.";
+ if(x.cat==="伊斯兰") return "口诀 U-J-B：Ulama, Jawi, Bahasa Melayu.";
+ if(x.part==="5.3"){
+   if(q.includes("1509")) return "口诀 1509 = Lopez datang.";
+   if(q.includes("25 julai")) return "口诀 25 Julai = serangan pertama.";
+   if(q.includes("10 ogos")) return "口诀 10 Ogos = serangan seterusnya.";
+   if(q.includes("24 ogos")) return "口诀 24 Ogos 1511 = Melaka jatuh.";
+   if(q.includes("1526")) return "口诀 1526 = Bentan dimusnahkan.";
+   if(q.includes("1528")) return "口诀 1528 = Sultan Mahmud Shah mangkat di Kampar.";
+   if(q.includes("matlamat")) return "口诀 3K：Kekayaan, Keagamaan, Kemasyhuran.";
+   return "口诀 L-K-M-G：Lancaran, Kayu-kayan, Meriam, Gajah.";
+ }
+ return "记忆法：先认题目关键词，再找对应人物、制度、年份或作用。";
+}
+
+function getSteps(x, selectedText){
+ return `
+ <div class="correction-box">
+   <h4>Langkah pembetulan / 订正步骤</h4>
+   <div class="correction-step"><strong>Langkah 1 — Kenal pasti kata kunci / 找关键词：</strong><br>${x.cat} · ${x.part}</div>
+   <div class="correction-step"><strong>Langkah 2 — Semak pilihan murid / 检查学生答案：</strong><br>Jawapan murid: ${selectedText || "Tidak dijawab（未作答）"}</div>
+   <div class="correction-step"><strong>Langkah 3 — Padankan fakta tepat / 对应正确知识：</strong><br>${x.e}</div>
+   <div class="correction-step"><strong>Langkah 4 — Sebab jawapan lain salah / 为什么其他答案不对：</strong><br>Jawapan mesti sepadan tepat dengan tokoh, tugas, undang-undang, tarikh atau peristiwa yang ditanya. Jangan pilih hanya kerana perkataan itu pernah muncul dalam bab ini.<br>答案必须精准对应题目问的人物、职责、法律、年份或事件，不能只因为该词在本章出现过就选择。</div>
+   <div class="mnemonic"><strong>口诀 / Formula ingatan：</strong><br>${getMnemonic(x)}</div>
+   <div class="retry-mini"><strong>检查法 / Cara semak：</strong><br>Tutup jawapan dan sebut semula: “Soalan tanya apa? Kata kunci apa? Fakta tepat apa?”<br>盖住答案后再说一次：“题目问什么？关键词是什么？准确知识是什么？”</div>
+ </div>`;
+}
+
+function checkMastery(){
+ let correct=0, answered=0;
+ let partStats={"5.1":[0,0],"5.2":[0,0],"5.3":[0,0]};
+ let catStats={"职位":[0,0]};
+ let wrongIds=[];
+
+ mcqQuestions.forEach((x,i)=>{
+   partStats[x.part][1]++;
+   if(x.cat==="职位") catStats["职位"][1]++;
+   const pick=document.querySelector(`input[name=m${i}]:checked`);
+   const exp=document.getElementById(`mexp${i}`);
+   if(pick){
+     answered++;
+     const ok=Number(pick.value)===x.a;
+     if(ok){correct++;partStats[x.part][0]++;if(x.cat==="职位")catStats["职位"][0]++;}
+     else wrongIds.push(i);
+     const selectedText=x.o[Number(pick.value)];
+     exp.innerHTML= ok
+       ? `<p class="correct"><strong>正确 / Betul</strong> — ${x.e}</p><div class="mnemonic"><strong>口诀：</strong>${getMnemonic(x)}</div>`
+       : `<p class="wrong"><strong>错误 / Salah</strong></p>${getSteps(x,selectedText)}`;
+   }else{
+     wrongIds.push(i);
+     exp.innerHTML=`<p class="wrong"><strong>未作答 / Tidak dijawab</strong></p>${getSteps(x,"")}`;
+   }
+ });
+
+ let structuredScore=0;
+ structuredQuestions.forEach((x,i)=>{
+   const t=document.getElementById(`s${i}`).value.trim();
+   const hit=keywordScore(t,x.keys);
+   const passed=hit>=2 && t.length>=35;
+   if(passed) structuredScore++;
+   document.getElementById(`sexp${i}`).innerHTML=
+   `<div class="correction-box">
+<h4>${passed?'基本达标 / Memadai':'需要加强 / Perlu diperbaiki'}</h4>
+<div class="correction-step"><strong>步骤1：</strong>找题目指令词，例如 Jelaskan / Bandingkan。</div>
+<div class="correction-step"><strong>步骤2：</strong>先写 Fakta，再写 Huraian。答案至少包含两个准确关键词。</div>
+<div class="correction-step"><strong>步骤3：</strong>检查是否回答“为什么、如何或有什么作用”。</div>
+<p><strong>命中关键词：</strong>${hit} 个</p>
+<p><strong>参考答案 BM：</strong>${x.sample}</p>
+<p class="zh"><strong>华语提醒：</strong>结构题不能只列点。每个重点后面必须补充解释或作用。</p>
+<div class="mnemonic"><strong>口诀：</strong>F-H = Fakta dahulu, Huraian kemudian（先事实，后解释）。</div>
+</div>`;
+ });
+
+ let kbatScore=0;
+ kbatQuestions.forEach((x,i)=>{
+   const t=document.getElementById(`k${i}`).value.trim();
+   const hit=keywordScore(t,x.keys);
+   const passed=hit>=2 && t.length>=35;
+   if(passed) kbatScore++;
+   document.getElementById(`kexp${i}`).innerHTML=
+   `<div class="correction-box">
+<h4>${passed?'基本达标 / Memadai':'需要加强 / Perlu diperbaiki'}</h4>
+<div class="correction-step"><strong>步骤1：</strong>找题目指令词，例如 Jelaskan / Bandingkan。</div>
+<div class="correction-step"><strong>步骤2：</strong>先写 Fakta，再写 Huraian。答案至少包含两个准确关键词。</div>
+<div class="correction-step"><strong>步骤3：</strong>检查是否回答“为什么、如何或有什么作用”。</div>
+<p><strong>命中关键词：</strong>${hit} 个</p>
+<p><strong>参考答案 BM：</strong>${x.sample}</p>
+<p class="zh"><strong>华语提醒：</strong>结构题不能只列点。每个重点后面必须补充解释或作用。</p>
+<div class="mnemonic"><strong>口诀：</strong>F-H = Fakta dahulu, Huraian kemudian（先事实，后解释）。</div>
+</div>`;
+ });
+
+ const totalPossible=mcqQuestions.length + structuredQuestions.length + kbatQuestions.length;
+ const totalScore=correct + structuredScore + kbatScore;
+ const pct=Math.round(totalScore/totalPossible*100);
+
+ const p51=Math.round(partStats["5.1"][0]/partStats["5.1"][1]*100);
+ const p52=Math.round(partStats["5.2"][0]/partStats["5.2"][1]*100);
+ const p53=Math.round(partStats["5.3"][0]/partStats["5.3"][1]*100);
+ const jobScore=catStats["职位"][0];
+
+ const mastery = pct>=85 && p51>=80 && p52>=80 && p53>=80 && jobScore>=8 && structuredScore>=4 && kbatScore>=2;
+
+ localStorage.setItem("bab5Wrong",JSON.stringify(wrongIds));
+
+ const r=document.getElementById("masteryResult");
+ r.style.display="block";
+ r.innerHTML=`
+ <h3>${mastery?'已达到 Bab 5 掌握标准':'尚未达到完整掌握标准'}</h3>
+ <p><strong>总分：</strong>${totalScore}/${totalPossible}（${pct}%）</p>
+ <div class="grid">
+ <div><strong>5.1：</strong>${p51}%</div>
+ <div><strong>5.2：</strong>${p52}%</div>
+ <div><strong>5.3：</strong>${p53}%</div>
+ <div><strong>职位：</strong>${jobScore}/10</div>
+ <div><strong>结构题：</strong>${structuredScore}/${structuredQuestions.length}</div>
+ <div><strong>KBAT：</strong>${kbatScore}/${kbatQuestions.length}</div>
+ </div>
+ <p>${mastery?'学生已经达到整体掌握要求。建议隔一天再做一次错题重测，确认不是短期记忆。':'系统已记录错题。请先阅读每题解释，再点击“重做错题”。只有订正后再次达到标准，才算真正掌握。'}</p>`;
+ r.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+function retryWrong(){
+ const wrong=JSON.parse(localStorage.getItem("bab5Wrong")||"[]");
+ attempt++;
+ document.getElementById("attemptNo").textContent=attempt;
+ document.querySelectorAll(".q").forEach((el,idx)=>{
+   if(idx<mcqQuestions.length){
+     el.style.display=wrong.includes(idx)?"block":"none";
+     if(wrong.includes(idx)){
+       el.querySelectorAll("input").forEach(i=>i.checked=false);
+       document.getElementById(`mexp${idx}`).innerHTML="";
+     }
+   }
+ });
+ document.getElementById("masteryResult").style.display="none";
+ window.location.hash="quiz";
+}
+
+function resetMastery(){
+ attempt++;
+ localStorage.removeItem("bab5Wrong");
+ renderQuiz();
+ window.location.hash="quiz";
+}
+
+renderQuiz();
+</script>
+
+</body>
+</html>
