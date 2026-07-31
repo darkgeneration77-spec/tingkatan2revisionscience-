@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sejarah Tingkatan 2 Bab 5 & 6 | Latihan Objektif</title>
+<style>
+:root{--bg:#07111f;--p:#10213a;--p2:#172f50;--line:#315071;--gold:#f4c75a;--blue:#69aaff;--green:#58d6a1;--red:#ff7777;--text:#f5f8fc;--muted:#bfd0e4}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#07101c,#0b182b);color:var(--text);font-family:Arial,"Microsoft YaHei",sans-serif;line-height:1.6}
+header{padding:48px 18px 30px;text-align:center;background:radial-gradient(circle at top,rgba(244,199,90,.24),transparent 45%),#102744}
+h1{color:var(--gold);font-size:clamp(30px,6vw,60px);margin:0}header p{color:var(--muted)}main{max-width:1100px;margin:auto;padding:20px 14px 70px}
+.card,.question,.result{background:linear-gradient(145deg,var(--p),var(--p2));border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0}
+.controls{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;background:rgba(7,17,31,.95);padding:10px;z-index:5;border-bottom:1px solid var(--line)}
+button,select{border:0;border-radius:9px;padding:10px 14px;font-weight:800}button{cursor:pointer}.primary{background:var(--gold);color:#201706}.secondary{background:#2d527d;color:white}
+.option{display:block;border:1px solid #3b5b7e;border-radius:9px;padding:10px;margin:7px 0;cursor:pointer}.option:hover{background:#244468}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:7px}.tag{font-size:12px;border-radius:999px;padding:4px 8px;background:#294a72;color:#dcecff}
+.correct{color:var(--green)}.wrong{color:var(--red)}.explain{background:#0b1728;border:1px solid #385b80;border-radius:11px;padding:13px;margin-top:10px}
+.step{border-left:4px solid var(--blue);background:rgba(105,170,255,.08);padding:8px 10px;margin:7px 0;border-radius:7px}.zh{border-left:4px solid var(--blue);padding:8px 10px;background:rgba(105,170,255,.08);border-radius:7px}
+.mn{border:1px solid rgba(88,214,161,.4);background:rgba(88,214,161,.09);padding:9px;border-radius:8px;margin-top:8px}
+.progress{height:12px;background:#0b1728;border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--gold);width:0}.hidden{display:none}
+table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:left}th{color:var(--gold)}
+@media print{.controls,button{display:none!important}body,.card,.question,.result{background:white;color:#111}}
+</style></head>
+<body>
+<header><h1>BAB 5 + BAB 6</h1><h2>Latihan Objektif Ulang Kaji</h2><p>60题综合选择题｜马来文主考 + 华语错题解释 + 口诀 + 错题重做</p></header>
+<div class="controls">
+<select id="filter" onchange="start()"><option value="Semua">Bab 5 + Bab 6</option><option>Bab 5</option><option>Bab 6</option></select>
+<select id="amount" onchange="start()"><option value="60">60题完整测试</option><option value="40">随机40题</option><option value="20">随机20题</option></select>
+<button class="secondary" onclick="start()">重新随机</button>
+<button class="primary" onclick="check()">全部批改</button>
+<button class="secondary" onclick="retryWrong()">只做错题</button>
+<button class="secondary" onclick="window.print()">打印</button>
+</div>
+<main>
+<div class="card"><strong>掌握标准：</strong>总分至少 85%，Bab 5 与 Bab 6 各至少 80%。错题订正后必须重做至全对。
+<div class="progress"><div class="bar" id="bar"></div></div></div>
+<div id="quiz"></div><div id="summary" class="result hidden"></div>
+</main>
+<script>
+const all=[
+{bab:"Bab 5",topic:"Pengasasan",q:"Siapakah pengasas Kesultanan Melayu Melaka?",o:["Parameswara","Sultan Mahmud Shah","Sultan Alauddin Riayat Shah I","Tun Perak"],a:0,ex:"Parameswara mengasaskan Kesultanan Melayu Melaka sekitar tahun 1400.",zh:"Parameswara 约于1400年建立马六甲王朝。",m:"P-1400：Parameswara sekitar 1400."},
+{bab:"Bab 5",topic:"Pengasasan",q:"Kesultanan Melayu Melaka diasaskan sekitar tahun...",o:["1299","1400","1511","1528"],a:1,ex:"Tarikh pengasasan yang perlu diingat ialah sekitar tahun 1400.",zh:"建立年份是约1400年，不是1511年；1511年是马六甲被葡萄牙占领。",m:"1400 bina，1511 jatuh."},
+{bab:"Bab 5",topic:"Pengasasan",q:"Muara Sungai Bertam juga dikenali sebagai...",o:["Sungai Johor","Sungai Melaka","Sungai Muar","Sungai Pahang"],a:1,ex:"Sungai Bertam ialah nama yang dikaitkan dengan Sungai Melaka.",zh:"Sungai Bertam 也称为 Sungai Melaka。",m:"Bertam = Melaka."},
+{bab:"Bab 5",topic:"Lokasi",q:"Apakah kelebihan Melaka yang terletak di laluan perdagangan utama?",o:["Mengawal pergerakan kapal dagang Timur dan Barat","Menguasai kawasan pertanian pedalaman","Mengelakkan semua pedagang asing","Membina istana di atas bukit"],a:0,ex:"Kedudukan di antara Timur dan Barat membolehkan Melaka mengawal laluan kapal dagang.",zh:"位于东西方贸易航线，使马六甲能控制商船往来。",m:"Laluan = Timur ↔ Barat."},
+{bab:"Bab 5",topic:"Lokasi",q:"Mengapakah kawasan berbukit-bukau sesuai dipilih?",o:["Menjadi benteng pertahanan dan panduan kapal","Membolehkan penanaman padi","Menjadi pusat perlombongan","Menghasilkan mata wang"],a:0,ex:"Bukit menjadi benteng pertahanan dan mercu tanda kepada kapal.",zh:"丘陵既可防守，也可作为船只辨认方向的标志。",m:"Bukit = Benteng + Panduan."},
+{bab:"Bab 5",topic:"Lokasi",q:"Pokok bakau dan api-api penting kerana...",o:["menjadi benteng semula jadi","menghasilkan sutera","menjadi tempat mencetak wang","menjadi pusat agama"],a:0,ex:"Pokok bakau dan api-api sukar ditembusi musuh lalu menjadi benteng semula jadi.",zh:"红树林难以穿越，形成天然防线。",m:"Bakau = Benteng."},
+{bab:"Bab 5",topic:"Lokasi",q:"Muara sungai yang terlindung daripada angin monsun membolehkan...",o:["kapal berlabuh dengan selamat","pedagang tidak dikenakan cukai","tentera menyerang Siam","raja membina mahkota"],a:0,ex:"Perlindungan daripada angin monsun menjadikan pelabuhan selamat untuk kapal berlabuh.",zh:"避开季候风，让船只可以安全停泊。",m:"Monsun terlindung = Kapal selamat."},
+{bab:"Bab 5",topic:"Kegemilangan",q:"Apakah tiga faktor utama kegemilangan Kesultanan Melayu Melaka?",o:["Raja, pentadbiran dan perundangan","Pertanian, perlombongan dan perikanan","Bahasa, tulisan dan seni bina","Perang, cukai dan ufti"],a:0,ex:"Kegemilangan disokong oleh kepemimpinan raja, pentadbiran cekap dan undang-undang tersusun.",zh:"辉煌的三大因素：有威望的国王、高效行政、完整法律。",m:"R-P-U：Raja, Pentadbiran, Undang-undang."},
+{bab:"Bab 5",topic:"Raja",q:"Apakah maksud daulat?",o:["Kuasa dan kewibawaan raja","Cukai perdagangan","Wilayah jajahan","Peraturan pelayaran"],a:0,ex:"Daulat merujuk kepada kuasa dan kewibawaan seseorang raja.",zh:"Daulat 指国王的权力与威望。",m:"Daulat = Kuasa raja."},
+{bab:"Bab 5",topic:"Raja",q:"Yang manakah alat kebesaran diraja?",o:["Cap mohor","Kompas","Timbangan","Jala"],a:0,ex:"Cap mohor ialah antara alat kebesaran bersama nobat, keris, lembing dan mahkota.",zh:"王室象征包括印玺、宫廷乐器、短剑、长矛与王冠。",m:"C-N-K-L-M：Cap, Nobat, Keris, Lembing, Mahkota."},
+{bab:"Bab 5",topic:"Pentadbiran",q:"Siapakah penasihat raja dan menteri utama?",o:["Bendahara","Temenggung","Laksamana","Penghulu Bendahari"],a:0,ex:"Bendahara menjadi penasihat raja dan menteri utama.",zh:"Bendahara 相当于首相，是国王顾问。",m:"Bendahara = PM."},
+{bab:"Bab 5",topic:"Pentadbiran",q:"Siapakah pemangku sultan?",o:["Bendahara","Temenggung","Laksamana","Syahbandar"],a:0,ex:"Bendahara mengambil alih tugas pemerintah ketika diperlukan.",zh:"Bendahara 可代理苏丹。",m:"Bendahara：Penasihat + Menteri + Pemangku."},
+{bab:"Bab 5",topic:"Pentadbiran",q:"Siapakah yang mengurus hasil dan ufti?",o:["Penghulu Bendahari","Temenggung","Laksamana","Nakhoda"],a:0,ex:"Penghulu Bendahari bertanggungjawab terhadap hasil, ufti dan kewangan.",zh:"Penghulu Bendahari 负责财政、税收与贡品。",m:"Penghulu Bendahari = MONEY."},
+{bab:"Bab 5",topic:"Pentadbiran",q:"Siapakah ketua polis dan penjara?",o:["Temenggung","Laksamana","Bendahara","Syahbandar"],a:0,ex:"Temenggung menjaga polis, penjara, bandar dan kota.",zh:"Temenggung 负责治安、监狱与城市管理。",m:"Temenggung = POLICE."},
+{bab:"Bab 5",topic:"Pentadbiran",q:"Siapakah hakim di darat?",o:["Temenggung","Laksamana","Bendahara","Penghulu Bendahari"],a:0,ex:"Temenggung juga menjalankan tugas sebagai hakim di darat.",zh:"陆上法官是 Temenggung。",m:"Darat = Temenggung."},
+{bab:"Bab 5",topic:"Pentadbiran",q:"Siapakah ketua angkatan laut dan hakim di laut?",o:["Laksamana","Temenggung","Bendahara","Penghulu Bendahari"],a:0,ex:"Laksamana mengetuai angkatan laut dan menjadi hakim di laut.",zh:"Laksamana 是海军统帅与海上法官。",m:"Laksamana = NAVY + Laut."},
+{bab:"Bab 5",topic:"Perundangan",q:"Hukum Kanun Melaka mengandungi...",o:["44 fasal","25 fasal","32 fasal","12 fasal"],a:0,ex:"Hukum Kanun Melaka mengandungi 44 fasal.",zh:"Hukum Kanun Melaka 有44条。",m:"HKM = 44."},
+{bab:"Bab 5",topic:"Perundangan",q:"Undang-Undang Laut Melaka mengandungi...",o:["25 fasal","44 fasal","18 fasal","40 fasal"],a:0,ex:"Undang-Undang Laut Melaka mengandungi 25 fasal.",zh:"Undang-Undang Laut Melaka 有25条。",m:"UULM = 25."},
+{bab:"Bab 5",topic:"Perundangan",q:"Yang manakah berkaitan dengan Hukum Kanun Melaka?",o:["Jenayah dan kekeluargaan","Tanggungjawab nakhoda sahaja","Pelayaran kapal sahaja","Arah angin monsun"],a:0,ex:"Hukum Kanun Melaka merangkumi jenayah, jual beli, kekeluargaan dan pentadbiran.",zh:"HKM 主要处理犯罪、买卖、家庭与行政。",m:"HKM = Darat."},
+{bab:"Bab 5",topic:"Perundangan",q:"Yang manakah berkaitan dengan Undang-Undang Laut Melaka?",o:["Pelayaran dan tanggungjawab nakhoda","Perwarisan takhta sahaja","Jenayah darat sahaja","Pembinaan kota"],a:0,ex:"Undang-Undang Laut Melaka mengatur pelayaran, perdagangan dan tugas warga kapal.",zh:"UULM 管理航海、贸易与船上人员职责。",m:"UULM = Laut."},
+{bab:"Bab 5",topic:"Empayar",q:"Bagaimanakah empayar Melaka dibentuk?",o:["Penaklukan, perkahwinan dan naungan","Serah, kerah dan ufti","Pertanian, perdagangan dan pelayaran","Bahasa, tulisan dan agama"],a:0,ex:"Empayar Melaka berkembang melalui penaklukan, perkahwinan dan naungan.",zh:"马六甲通过征服、联姻与庇护扩大帝国。",m:"P-P-N."},
+{bab:"Bab 5",topic:"Perdagangan",q:"Bahasa Melayu berperanan sebagai...",o:["lingua franca","bahasa rahsia","bahasa Portugis","bahasa ketenteraan"],a:0,ex:"Bahasa Melayu menjadi bahasa perantaraan dalam perdagangan.",zh:"马来语成为通用贸易语言。",m:"Lingua franca = Bahasa perantaraan."},
+{bab:"Bab 5",topic:"Islam",q:"Antara berikut, yang manakah cara penyebaran Islam?",o:["Perkahwinan dan perdagangan","Penutupan pelabuhan","Larangan tulisan Jawi","Penghapusan hubungan luar"],a:0,ex:"Islam tersebar melalui pengislaman pemerintah, perkahwinan, ulama, perdagangan dan peluasan kuasa.",zh:"伊斯兰通过统治者皈依、联姻、传教士、贸易与扩张传播。",m:"P-U-D-K：Pemerintah, Ulama, Dagang, Kahwin."},
+{bab:"Bab 5",topic:"Portugis",q:"Apakah matlamat Portugis datang ke Melaka?",o:["Kekayaan, keagamaan dan kemasyhuran","Pertanian, pendidikan dan bahasa","Perkahwinan, naungan dan penaklukan","Serah, kerah dan ufti"],a:0,ex:"Portugis mengejar kekayaan, menyebarkan agama Kristian dan mencari kemasyhuran.",zh:"葡萄牙目标：财富、宗教与名望。",m:"3K：Kekayaan, Keagamaan, Kemasyhuran."},
+{bab:"Bab 5",topic:"Portugis",q:"Siapakah yang tiba di Melaka pada 11 September 1509?",o:["Lopez de Sequeira","Alfonso de Albuquerque","Raja Ali","Raja Kechil"],a:0,ex:"Lopez de Sequeira tiba pada tahun 1509 sebelum serangan 1511.",zh:"1509年来到马六甲的是 Lopez de Sequeira。",m:"1509 = Lopez datang."},
+{bab:"Bab 5",topic:"Portugis",q:"Siapakah yang memimpin serangan Portugis pada tahun 1511?",o:["Alfonso de Albuquerque","Lopez de Sequeira","Tun Perak","Sultan Mahmud Shah"],a:0,ex:"Alfonso de Albuquerque mengetuai serangan Portugis.",zh:"1511年攻打马六甲的葡萄牙领袖是 Alfonso de Albuquerque。",m:"Albuquerque = Attack 1511."},
+{bab:"Bab 5",topic:"Timeline",q:"Bilakah pemerintahan Melaka yang berpusat di Melaka berakhir?",o:["24 Ogos 1511","25 Julai 1511","10 Ogos 1511","11 September 1509"],a:0,ex:"Melaka dikuasai Portugis pada 24 Ogos 1511.",zh:"1511年8月24日，马六甲被葡萄牙控制。",m:"24-8-1511 = Melaka jatuh."},
+{bab:"Bab 5",topic:"Pertahanan",q:"Yang manakah strategi Melaka menghadapi Portugis?",o:["Lancaran, perahu berapi dan tentera bergajah","Menyerah tanpa melawan","Menutup semua sungai","Menghapuskan meriam"],a:0,ex:"Melaka menggunakan lancaran, perahu berapi, meriam dan tentera bergajah.",zh:"马六甲使用战船、火船、大炮与象兵抵抗。",m:"L-M-G：Lancaran, Meriam, Gajah."},
+{bab:"Bab 5",topic:"Timeline",q:"Pusat pemerintahan di Bentan dimusnahkan Portugis pada...",o:["1526","1528","1511","1540"],a:0,ex:"Bentan dimusnahkan pada tahun 1526.",zh:"Bentan 在1526年被葡萄牙摧毁。",m:"1526 = Bentan musnah."},
+{bab:"Bab 5",topic:"Legasi",q:"Siapakah yang meneruskan legasi Kesultanan Melayu Melaka?",o:["Kesultanan Johor Riau","Kerajaan Portugis","Kerajaan Siam","Kerajaan Majapahit"],a:0,ex:"Kesultanan Johor Riau meneruskan warisan politik dan budaya Melaka.",zh:"柔佛廖内王朝延续马六甲王朝的政治与文化传统。",m:"Melaka → Johor Riau."},
+{bab:"Bab 6",topic:"Pengasasan",q:"Siapakah pengasas Kesultanan Johor Riau?",o:["Raja Ali","Raja Kechil","Tun Seri Lanang","Daeng Merewah"],a:0,ex:"Raja Ali menggunakan gelaran Sultan Alauddin Riayat Shah I.",zh:"Raja Ali 即 Sultan Alauddin Riayat Shah I，是柔佛廖内王朝建立者。",m:"Raja Ali = Sultan Alauddin Riayat Shah I."},
+{bab:"Bab 6",topic:"Pengasasan",q:"Kesultanan Johor Riau diasaskan pada tahun...",o:["1511","1528","1540","1641"],a:1,ex:"Kesultanan Johor Riau diasaskan pada 1528.",zh:"柔佛廖内王朝建立于1528年。",m:"1528 = Johor Riau bermula."},
+{bab:"Bab 6",topic:"Pengasasan",q:"Raja Ali ialah putera kepada...",o:["Sultan Mahmud Shah dan Tun Fatimah","Parameswara dan Tun Kudu","Sultan Mansur Shah dan Tun Teja","Raja Kechil dan Tun Seri Lanang"],a:0,ex:"Raja Ali ialah putera Sultan Mahmud Shah dan Tun Fatimah.",zh:"Raja Ali 是 Sultan Mahmud Shah 与 Tun Fatimah 的儿子。",m:"Ali = Mahmud + Fatimah."},
+{bab:"Bab 6",topic:"Pusat Pemerintahan",q:"Pusat pemerintahan pertama Johor Riau ialah...",o:["Kota Kara","Kota Sayong","Kota Batu","Batu Sawar"],a:0,ex:"Kota Kara di Pekan Tua dibina pada 1528.",zh:"第一个统治中心是 Kota Kara, Pekan Tua。",m:"K-S-B：Kara → Sayong → Batu."},
+{bab:"Bab 6",topic:"Pusat Pemerintahan",q:"Mengapakah Kota Kara sesuai dijadikan pusat pemerintahan?",o:["Sungai lebar dan dalam serta kawasan berbukit","Sungai sangat cetek","Tiada laluan kapal","Jauh dari kawasan pertahanan"],a:0,ex:"Sungai yang lebar dan dalam memudahkan kapal, manakala bukit membantu pertahanan.",zh:"河流宽深方便船只，丘陵有利防守。",m:"Kara = Kapal + Kawal."},
+{bab:"Bab 6",topic:"Pusat Pemerintahan",q:"Mengapakah Kota Sayong lebih sukar diserang?",o:["Sungainya sempit","Mempunyai 600 kapal","Terletak di China","Tiada penduduk"],a:0,ex:"Sungai yang sempit menyukarkan kapal perang musuh melaluinya.",zh:"河道狭窄，使敌军战船难以进入。",m:"Sayong = Sungai sempit = Selamat."},
+{bab:"Bab 6",topic:"Pusat Pemerintahan",q:"Kota Batu juga dikenali sebagai...",o:["Johor Lama atau Tanjung Batu","Pekan Tua atau Bentan","Batu Sawar atau Panchor","Riau atau Lingga"],a:0,ex:"Kota Batu terletak di Johor Lama dan dikenali juga sebagai Tanjung Batu.",zh:"Kota Batu 位于 Johor Lama，也称 Tanjung Batu。",m:"Batu = Johor Lama = Tanjung Batu."},
+{bab:"Bab 6",topic:"Cabaran",q:"Persaingan Johor–Acheh–Portugis dikenali sebagai...",o:["Perang Tiga Segi","Perang Lima Saudara","Perang Tungkal","Perang Oranje"],a:0,ex:"Tiga kuasa bersaing menguasai perdagangan Selat Melaka.",zh:"柔佛、亚齐与葡萄牙三方争夺马六甲海峡贸易控制权。",m:"J-A-P = Perang Tiga Segi."},
+{bab:"Bab 6",topic:"Cabaran",q:"Nama lain Perang Tiga Segi ialah...",o:["Perang Seratus Tahun","Perang Sepuluh Tahun","Perang Riau","Perang Kota Kara"],a:0,ex:"Persaingan panjang tersebut turut dikenali sebagai Perang Seratus Tahun.",zh:"三角战争也称百年战争。",m:"3 kuasa, 100 tahun."},
+{bab:"Bab 6",topic:"Cabaran",q:"Johor menuntut wilayah __________ daripada Jambi.",o:["Tungkal","Panchor","Bentan","Kampar"],a:0,ex:"Pertikaian Johor-Jambi berkaitan wilayah Tungkal.",zh:"柔佛与占碑冲突的争议地区是 Tungkal。",m:"Johor–Jambi = Tungkal."},
+{bab:"Bab 6",topic:"Cabaran",q:"Konflik pembesar berlaku antara...",o:["Tun Habib Abdul Majid dan Tun Abdul Jamil","Raja Ali dan Raja Kechil","Tun Seri Lanang dan Raja Ali Haji","Sultan Mahmud Shah dan Parameswara"],a:0,ex:"Konflik melibatkan Bendahara Tun Habib Abdul Majid dan Laksamana Tun Abdul Jamil.",zh:"贵族冲突发生在 Bendahara Tun Habib Abdul Majid 与 Laksamana Tun Abdul Jamil 之间。",m:"Habib = Bendahara; Jamil = Laksamana."},
+{bab:"Bab 6",topic:"Cabaran",q:"Raja Kechil menyerang Johor pada tahun...",o:["1718","1722","1606","1641"],a:0,ex:"Raja Kechil menyerang Johor pada 1718 dan menuntut takhta.",zh:"Raja Kechil 于1718年攻打柔佛并要求王位。",m:"1718 serang; 1722 kalah."},
+{bab:"Bab 6",topic:"Cabaran",q:"Raja Kechil dikalahkan pada...",o:["4 Oktober 1722","17 Mei 1606","24 Ogos 1511","11 September 1509"],a:0,ex:"Raja Kechil dikalahkan dengan bantuan Opu Bugis Lima Bersaudara.",zh:"Raja Kechil 在五位武吉斯兄弟协助下于1722年10月4日被击败。",m:"4-10-1722 = Raja Kechil kalah."},
+{bab:"Bab 6",topic:"Strategi",q:"Apakah tiga strategi Johor Riau menghadapi cabaran?",o:["Pindah pusat, kota pertahanan dan hubungan Belanda","Pertanian, perikanan dan perlombongan","Perkahwinan, naungan dan penaklukan","Serah, kerah dan ufti"],a:0,ex:"Johor memindahkan pusat, membina kota dan bekerjasama dengan Belanda.",zh:"三大策略：迁移统治中心、建设防御城、与荷兰合作。",m:"P-K-B."},
+{bab:"Bab 6",topic:"Strategi",q:"Hubungan Johor dengan Belanda bermula pada tahun...",o:["1602","1606","1641","1679"],a:0,ex:"Hubungan Johor-Belanda bermula pada tahun 1602.",zh:"柔佛与荷兰的关系始于1602年。",m:"1602 mula; 1606 perjanjian."},
+{bab:"Bab 6",topic:"Strategi",q:"Perjanjian Johor-Belanda ditandatangani pada...",o:["17 Mei 1606","Januari 1641","4 Oktober 1722","24 Ogos 1511"],a:0,ex:"Perjanjian ditandatangani pada 17 Mei 1606.",zh:"柔佛—荷兰协议签于1606年5月17日。",m:"17-5-1606 = Perjanjian."},
+{bab:"Bab 6",topic:"Strategi",q:"Perjanjian Johor-Belanda ditandatangani di atas kapal...",o:["Oranje","Pencalang","Banteng","Penjajap"],a:0,ex:"Perjanjian ditandatangani di atas kapal Oranje.",zh:"协议在 Oranje 号船上签署。",m:"Oranje = Belanda."},
+{bab:"Bab 6",topic:"Strategi",q:"Portugis ditewaskan di Melaka pada...",o:["Januari 1641","Julai 1511","Mei 1606","Oktober 1722"],a:0,ex:"Johor membantu Belanda mengalahkan Portugis pada Januari 1641.",zh:"柔佛协助荷兰于1641年1月击败葡萄牙。",m:"1641 = Portugis kalah."},
+{bab:"Bab 6",topic:"Kegemilangan",q:"Dua aspek kegemilangan Johor Riau ialah...",o:["Perdagangan dan persuratan","Pertanian dan perlombongan","Perang dan penaklukan","Seni bina dan tulisan"],a:0,ex:"Johor Riau gemilang sebagai pusat perdagangan dan persuratan Melayu.",zh:"柔佛廖内的辉煌主要体现在贸易与马来文学。",m:"P-P：Perdagangan + Persuratan."},
+{bab:"Bab 6",topic:"Perdagangan",q:"Mengapakah pelabuhan Johor Lama, Batu Sawar dan Panchor sesuai untuk kapal besar?",o:["Sungai Johor lebar dan dalam","Sungai Johor sangat cetek","Tiada arus air","Terletak di gunung"],a:0,ex:"Sungai Johor yang lebar dan dalam mudah dimudiki kapal besar.",zh:"柔佛河宽而深，适合大型船只航行。",m:"Lebar + Dalam = Kapal besar."},
+{bab:"Bab 6",topic:"Perdagangan",q:"Pelabuhan Riau strategik kerana terletak di...",o:["persimpangan lalu lintas maritim","kawasan pertanian pedalaman","puncak gunung","sempadan Siam"],a:0,ex:"Riau berada di persimpangan laluan maritim dan menjadi tumpuan pedagang.",zh:"Riau 位于海上交通交汇处。",m:"Riau = Persimpangan maritim."},
+{bab:"Bab 6",topic:"Perdagangan",q:"Berapakah kapal dagang yang berlabuh terutama di Riau?",o:["500–600","50–60","100–200","900–1000"],a:0,ex:"Catatan menunjukkan sekitar 500 hingga 600 kapal dagang berlabuh.",zh:"约有500至600艘商船停靠。",m:"Riau sibuk = 500–600."},
+{bab:"Bab 6",topic:"Pelabuhan",q:"Siapakah yang mengurus jual beli, cukai, ukuran dan timbangan?",o:["Syahbandar","Temenggung","Tun Seri Lanang","Raja Kechil"],a:0,ex:"Syahbandar mengurus perjalanan perdagangan di pelabuhan.",zh:"Syahbandar 管理交易、税收、度量衡。",m:"Syahbandar = Sistem jual beli."},
+{bab:"Bab 6",topic:"Pelabuhan",q:"Apakah mata wang emas Johor Riau?",o:["Mas","Kupang","Katun","Dinar Portugis"],a:0,ex:"Mas ialah wang emas, kupang ialah perak dan katun ialah timah.",zh:"Mas 是金币，Kupang 是银币，Katun 是锡币。",m:"M-K-K：Mas emas, Kupang perak, Katun timah."},
+{bab:"Bab 6",topic:"Pelabuhan",q:"Apakah peranan Orang Laut?",o:["Mengawal pelabuhan dan menjadi penunjuk arah","Menulis Sulalatus Salatin","Mengurus undang-undang keluarga","Menjadi pedagang Gujerat"],a:0,ex:"Orang Laut menjaga pelabuhan, menunda kapal, menjadi penunjuk arah dan tentera laut.",zh:"Orang Laut 负责守港、拖船、导航与海军任务。",m:"Orang Laut = Pelabuhan + Pandu + Perang."},
+{bab:"Bab 6",topic:"Pelabuhan",q:"Dalam sistem naungan, pedagang mendapat...",o:["perlindungan pembesar","takhta kerajaan","jawatan laksamana","kebebasan tanpa cukai"],a:0,ex:"Pembesar memberi perlindungan dan pedagang menyerahkan sebahagian keuntungan sebagai cukai.",zh:"商人获得贵族保护，并缴纳部分利润作为税。",m:"Naungan = Lindung ↔ Cukai."},
+{bab:"Bab 6",topic:"Persuratan",q:"Siapakah menyusun dan menulis semula Sulalatus Salatin?",o:["Tun Seri Lanang","Raja Ali Haji","Bukhari al-Jauhari","Tun Hisap Misai"],a:0,ex:"Tun Seri Lanang menyusun semula karya tersebut pada 1612.",zh:"Tun Seri Lanang 于1612年重写 Sulalatus Salatin。",m:"Tun Seri Lanang = Sulalatus Salatin = 1612."},
+{bab:"Bab 6",topic:"Persuratan",q:"Apakah nama asal Sulalatus Salatin?",o:["Hikayat Melayu","Hikayat Hang Tuah","Tajul Salatin","Tuhfat al-Nafis"],a:0,ex:"Nama asal Sulalatus Salatin ialah Hikayat Melayu.",zh:"Sulalatus Salatin 原名 Hikayat Melayu。",m:"Sulalatus Salatin dahulu = Hikayat Melayu."},
+{bab:"Bab 6",topic:"Persuratan",q:"Hikayat Hang Tuah menonjolkan...",o:["kepahlawanan dan kesetiaan","sistem mata wang","pembinaan Kota Kara","perjanjian Belanda"],a:0,ex:"Karya ini menonjolkan kepahlawanan serta kesetiaan Hang Tuah kepada raja.",zh:"该作品强调 Hang Tuah 的英雄精神与忠君。",m:"Hang Tuah = Pahlawan + Setia."},
+{bab:"Bab 6",topic:"Persuratan",q:"Siapakah pengarang Gurindam Dua Belas?",o:["Raja Ali Haji","Tun Seri Lanang","Raja Ahmad","Bukhari al-Jauhari"],a:0,ex:"Gurindam Dua Belas ialah karya Raja Ali Haji.",zh:"《十二格言诗》的作者是 Raja Ali Haji。",m:"Raja Ali Haji = Gurindam Dua Belas."}
+];
+let active=[], wrong=[];
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function start(){
+ let b=document.getElementById('filter').value,n=+document.getElementById('amount').value;
+ let pool=b==='Semua'?all:all.filter(x=>x.bab===b);
+ active=shuffle(pool).slice(0,Math.min(n,pool.length));wrong=[];
+ render();document.getElementById('summary').classList.add('hidden');
+}
+function render(){
+ document.getElementById('quiz').innerHTML=active.map((x,i)=>`<div class="question" id="box${i}">
+ <div class="meta"><span class="tag">${x.bab}</span><span class="tag">${x.topic}</span></div>
+ <strong>${i+1}. ${x.q}</strong>
+ ${x.o.map((v,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> ${v}</label>`).join('')}
+ <div id="e${i}"></div></div>`).join('');
+ document.getElementById('bar').style.width='0%';
+}
+function correction(x,sel){
+ return `<div class="explain">
+ <div class="step"><strong>Langkah 1 / 步骤1：</strong>Kenal pasti bab dan topik: ${x.bab} — ${x.topic}。</div>
+ <div class="step"><strong>Langkah 2 / 步骤2：</strong>Cari kata kunci dalam soalan. Tentukan sama ada soalan meminta tokoh, tahun, tempat, tugas, sebab atau karya。<br>先判断题目问人物、年份、地点、职责、原因还是作品。</div>
+ <div class="step"><strong>Langkah 3 / 步骤3：</strong>Jawapan murid: ${sel||'Tidak dijawab（未作答）'}。</div>
+ <div class="step"><strong>Langkah 4 / 步骤4：</strong>${x.ex}</div>
+ <div class="zh"><strong>华语解释：</strong>${x.zh}</div>
+ <div class="mn"><strong>口诀 / Formula ingatan：</strong>${x.m}</div>
+ <div class="step"><strong>检查法：</strong>Tutup jawapan dan jawab semula: “Soalan tanya apa? Fakta tepat apa?”<br>盖住答案，再说：“题目问什么？准确知识是什么？”</div>
+ </div>`;
+}
+function check(){
+ let score=0,stats={"Bab 5":[0,0],"Bab 6":[0,0]};wrong=[];
+ active.forEach((x,i)=>{
+  stats[x.bab][1]++;
+  let p=document.querySelector(`input[name=q${i}]:checked`),e=document.getElementById(`e${i}`);
+  let ok=p&&+p.value===x.a;
+  if(ok){score++;stats[x.bab][0]++;e.innerHTML=`<p class="correct"><strong>Betul / 正确</strong> — ${x.ex}</p><div class="mn">${x.m}</div>`}
+  else{wrong.push(x);e.innerHTML=`<p class="wrong"><strong>Salah / 错误</strong></p>${correction(x,p?x.o[+p.value]:'')}`}
+ });
+ let pct=Math.round(score/active.length*100),b5=stats["Bab 5"][1]?Math.round(stats["Bab 5"][0]/stats["Bab 5"][1]*100):null,b6=stats["Bab 6"][1]?Math.round(stats["Bab 6"][0]/stats["Bab 6"][1]*100):null;
+ let pass=pct>=85&&(b5===null||b5>=80)&&(b6===null||b6>=80);
+ let topics={};active.forEach((x,i)=>{let p=document.querySelector(`input[name=q${i}]:checked`),ok=p&&+p.value===x.a;topics[x.topic]??=[0,0];topics[x.topic][1]++;if(ok)topics[x.topic][0]++});
+ let weak=Object.entries(topics).map(([k,v])=>[k,Math.round(v[0]/v[1]*100)]).filter(x=>x[1]<80).sort((a,b)=>a[1]-b[1]);
+ let s=document.getElementById('summary');s.classList.remove('hidden');s.innerHTML=`<h2>${pass?'达到综合掌握标准':'尚未达到综合掌握标准'}</h2>
+ <p><strong>总分：</strong>${score}/${active.length}（${pct}%）</p>
+ <p>${b5===null?'':`Bab 5：${b5}%　`}${b6===null?'':`Bab 6：${b6}%`}</p>
+ <h3>需要重温</h3><p>${weak.length?weak.map(x=>`${x[0]}（${x[1]}%）`).join('、'):'没有明显弱项'}</p>
+ <p>${pass?'隔天再随机测试一次，确认长期记忆。':'阅读错题步骤和口诀后，点击“只做错题”。'}</p>`;
+ document.getElementById('bar').style.width=pct+'%';s.scrollIntoView({behavior:'smooth'});
+}
+function retryWrong(){
+ if(!wrong.length){alert('请先批改，系统才知道哪些是错题。');return}
+ active=shuffle(wrong);wrong=[];render();window.scrollTo({top:0,behavior:'smooth'});
+}
+start();
+</script></body></html>
